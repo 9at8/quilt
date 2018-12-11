@@ -185,7 +185,7 @@ export default class FormState<
 
       if (this.hasClientErrors) {
         if (disableOnSubmit) {
-          this.unsetDisabledFields();
+          this.enableFields();
         }
 
         this.setState({submitting: false});
@@ -204,7 +204,7 @@ export default class FormState<
     }
 
     if (disableOnSubmit) {
-      this.unsetDisabledFields();
+      this.enableFields();
     }
 
     this.setState({submitting: false});
@@ -398,7 +398,7 @@ export default class FormState<
     });
   }
 
-  private unsetDisabledFields() {
+  private enableFields() {
     this.setState(({fields}: State<Fields>) => {
       return {
         fields: mapObject(fields, field => {
